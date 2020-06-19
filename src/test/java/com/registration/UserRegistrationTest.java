@@ -125,4 +125,29 @@ public class UserRegistrationTest {
             Assert.assertEquals(this.validationExpected, valid);
         }
     }
+    @Test
+    public void proper_mobileNumber_shouldreturntrue() {
+        boolean valid = validation.validateMobileNumber("91 9876543210");
+        Assert.assertEquals(true, valid);
+    }
+    @Test
+    public void mobileNumber_withNoCode_shouldreturnfalse() {
+        boolean valid = validation.validateMobileNumber("9876543210");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void mobileNumber_with_wrongCode_shouldreturnfalse() {
+        boolean valid = validation.validateMobileNumber("12 9876543210");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void mobileNumber_with_lessNumbers_shouldreturnfalse() {
+        boolean valid = validation.validateMobileNumber("91 9876543");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void mobileNumber_with_moreNumbers_shouldreturnfalse() {
+        boolean valid = validation.validateMobileNumber("91 987654321098");
+        Assert.assertEquals(false, valid);
+    }
 }
