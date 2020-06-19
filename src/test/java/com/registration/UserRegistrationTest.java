@@ -17,18 +17,43 @@ public class UserRegistrationTest{
         Assert.assertEquals(false, valid);
     }
     @Test
-    public void FirstName_improperLength_shouldReturnFalse() {
-        boolean valid=validation.validateFirstName("kal");
+    public void firstName_improperLength_shouldReturnFalse() {
+        boolean valid=validation.validateFirstName("Ka");
         Assert.assertEquals(false, valid);
     }
     @Test
-    public void FirstName_withSpecialCharacters_shouldReturnFalse() {
+    public void firstName_withSpecialCharacters_shouldReturnFalse() {
         boolean valid=validation.validateFirstName("kalyan@");
         Assert.assertEquals(false, valid);
     }
     @Test
-    public void FirstName_withNumbers_shouldReturnFalse() {
+    public void firstName_withNumbers_shouldReturnFalse() {
         boolean valid=validation.validateFirstName("kalyan123");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void properLastName_shouldReturnTrue() {
+        boolean valid=validation.validateLastName("Thumurugoti");
+        Assert.assertEquals(true, valid);
+    }
+    @Test
+    public void lastName_noUppercase_shouldReturnFalse() {
+        boolean valid=validation.validateLastName("thumurugoti");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void lastName_improperLength_shouldReturnFalse() {
+        boolean valid=validation.validateLastName("Th");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void lastName_withSpecialCharacters_shouldReturnFalse() {
+        boolean valid=validation.validateLastName("Thumu@ugoti");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void lastName_withNumbers_shouldReturnFalse() {
+        boolean valid=validation.validateLastName("Thumurugoti123");
         Assert.assertEquals(false, valid);
     }
 }
