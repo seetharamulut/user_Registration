@@ -9,7 +9,7 @@ public class Validation {
     public static final String LASTNAME_REGEX = "^[A-Z]{1}[A-za-z]{2,}$";
     public static final String EMAIL_REGEX = "^[a-zA-Z0-9]+[._+-][0-9a-zA-Z]+@[a-z]{1,}+.[a-z]{1,4}([.][a-z]{1,})*$";
     public static final String MOBILENUMBER_REGEX = "^[9,1]{1,2}[' '][0-9]{10}";
-
+    public static final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
     public boolean validateFirstName(String firstName){
         Pattern pattern=Pattern.compile(FIRSTNAME_REGEX);
         return pattern.matcher(firstName).matches();
@@ -32,5 +32,9 @@ public class Validation {
     public boolean validateMobileNumber(String mobileNumber){
         Pattern pattern=Pattern.compile(MOBILENUMBER_REGEX);
         return pattern.matcher(mobileNumber).matches();
+    }
+    public boolean validatePassword(String password){
+        Pattern pattern=Pattern.compile(PASSWORD_REGEX);
+        return pattern.matcher(password).matches();
     }
 }

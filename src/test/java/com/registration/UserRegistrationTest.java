@@ -150,4 +150,29 @@ public class UserRegistrationTest {
         boolean valid = validation.validateMobileNumber("91 987654321098");
         Assert.assertEquals(false, valid);
     }
+    @Test
+    public void proper_password_shouldreturntrue() {
+        boolean valid = validation.validatePassword("AbcDef@12");
+        Assert.assertEquals(true, valid);
+    }
+    @Test
+    public void improper_password_with_noNumber_shouldreturntrue() {
+        boolean valid = validation.validatePassword("Abcdefgg@");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void improper_password_with_noSpecialChar_shouldreturntrue() {
+        boolean valid = validation.validatePassword("Abcdefgg1");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void improper_password_with_noCapitalLetter_shouldreturntrue() {
+        boolean valid = validation.validatePassword("abcdefg@1");
+        Assert.assertEquals(false, valid);
+    }
+    @Test
+    public void improper_password_with_smallLength_shouldreturntrue() {
+        boolean valid = validation.validatePassword("aefg@1");
+        Assert.assertEquals(false, valid);
+    }
 }
